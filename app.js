@@ -5,9 +5,12 @@ const mongoose = require('mongoose');
 
 const graphQlSchema = require('./graphql/schema/index');
 const graphQlResolvers = require('./graphql/resolvers/index');
+const isAuth = require('./middleware/is-auth');
+
 const app = express();
 
 app.use(bodyParser.json());
+app.use(isAuth);
 
 app.use(
   '/graphql',
@@ -25,7 +28,7 @@ mongoose
     }@cluster0-bojs0.mongodb.net/${
       process.env.MONGO_DB
     }?retryWrites=true&w=majority`
-  )
+  , { useNewUrlParser: true })
   .then(() => {
     app.listen(3000);
   })
