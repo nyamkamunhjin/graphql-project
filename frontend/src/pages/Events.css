@@ -1,0 +1,26 @@
+.events-control {
+    text-align: center;
+    border: 1px solid #0068bf;
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 30rem;
+    max-width: 80%;
+}
+
+.events-control button {
+    margin-right: 0;
+}
+
+.events-list {
+    margin: 2rem auto;
+    width: 40rem;
+    max-width: 90%;
+    list-style: none;
+    padding: 0;
+}
+
+.events-list-item {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #0068bf
+}

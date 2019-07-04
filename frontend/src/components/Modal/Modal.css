@@ -1,0 +1,36 @@
+.modal {
+  width: 90%;
+  max-width: 90%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 20vh;
+  left: 5%;
+}
+
+.modal-header {
+  padding: 1rem;
+  background: #0068bf;
+  color: #fff;
+}
+
+.modal-header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.modal-content {
+    padding: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+@media (min-width: 768px) {
+  .modal {
+    width: 50rem;
+    left: calc((100% - 30rem) / 2);
+  }
+}
