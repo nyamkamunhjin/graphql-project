@@ -1,0 +1,7 @@
+.event-list {
+  margin: 2rem auto;
+  width: 40rem;
+  max-width: 90%;
+  list-style: none;
+  padding: 0;
+}

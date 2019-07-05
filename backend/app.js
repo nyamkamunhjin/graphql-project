@@ -42,6 +42,7 @@ mongoose
   , { useNewUrlParser: true })
   .then(() => {
     app.listen(3001);
+    console.log("Listening on port localhost:3001")
   })
   .catch(err => {
     console.log(err);
