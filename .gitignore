@@ -87,6 +87,3 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-# nodemon configuration
-nodemon.json
-
