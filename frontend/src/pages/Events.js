@@ -82,8 +82,6 @@ class EventsPage extends Component {
           }
         `
     };
-
-    const { token } = this.context;
     // console.log(token);
 
     // send request
@@ -92,7 +90,7 @@ class EventsPage extends Component {
       body: JSON.stringify(requestBody),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + this.context.token
       }
     })
       .then(res => {
@@ -176,7 +174,42 @@ class EventsPage extends Component {
     })
   }
 
-  bookEventHandler = () => {}
+  bookEventHandler = () => {
+    const requestBody = {
+      query: `
+          mutation {
+            bookEvent(eventId: "${this.state.selectedEvent._id}") {
+              _id
+              createdAt
+              updatedAt
+            }
+          }
+        `
+    };
+
+    // send request
+    fetch('http://localhost:3001/graphql', {
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.context.token
+      }
+    })
+      .then(res => {
+        if (res.status !== 200 && res.status !== 201) {
+          throw new Error('Failed!');
+        }
+        return res.json();
+      })
+      .then(resData => {
+        console.log(resData);
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState({ isLoading: false });
+      });
+  }
  
   render() {
     return (
@@ -218,9 +251,9 @@ class EventsPage extends Component {
         {this.state.selectedEvent && <Modal
             title={this.state.selectedEvent.title}
             canCancel
-            canConfirm
+            canConfirm={this.context.token ? true : false}
             onCancel={this.modalCancelHandler}
-            onConfirm={this.bookEventHandler}
+            onConfirm={this.context.token ? this.bookEventHandler : null}
             confirmText="Book"
           >
            <h1>{this.state.selectedEvent.title}</h1>

@@ -22,7 +22,6 @@ class App extends Component {
   };
 
   logout = () => {
-    console.log('logout called');
     this.setState({ token: null, userId: null });
   };
 
