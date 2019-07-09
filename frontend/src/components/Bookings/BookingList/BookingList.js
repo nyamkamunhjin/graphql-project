@@ -8,10 +8,16 @@ const bookingList = props => (
         <li key={booking._id} className="bookings-item">
           <div className="bookings-item-data">
             {booking.event.title} -
-            {new Date(booking.createdAt).toLocaleDateString()}
+            {new Date(booking.createdAt).toLocaleDateString()} -
+            ${booking.event.price}
           </div>
           <div className="bookings-item-actions">
-            <button className="btn-cancel" onClick={props.onDelete.bind(this, booking._id)}>Cancel</button>
+            <button
+              className="btn-cancel"
+              onClick={props.onDelete.bind(this, booking._id)}
+            >
+              Cancel
+            </button>
           </div>
         </li>
       );
